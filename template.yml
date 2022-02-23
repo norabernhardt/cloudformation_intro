@@ -28,3 +28,16 @@ Resources:
     Type: AWS::EC2::RouteTable
     Properties: 
       VpcId: !Ref VPC
+  
+  SubnetRouteTableAssociation:  
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref RouteTable
+      SubnetId: !Ref Subnet
+  
+  myRoute:
+    Type: AWS::EC2::Route
+    Properties:
+       RouteTableId: !Ref RouteTable
+       DestinationCidrBlock: 0.0.0.0/0
+       GatewayId: !Ref InternetGateway
