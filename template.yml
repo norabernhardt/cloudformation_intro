@@ -6,4 +6,11 @@ Resources:
     Properties: 
       CidrBlock: 10.0.0.0/16
       EnableDnsSupport: 'true'
-      
+  
+  Subnet:
+    Type: AWS::EC2::Subnet
+    Properties: 
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: "us-east-1a"
+      MapPublicIpOnLaunch: true
+      VpcId: !Ref VPC
