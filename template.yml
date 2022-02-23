@@ -14,3 +14,17 @@ Resources:
       AvailabilityZone: "us-east-1a"
       MapPublicIpOnLaunch: true
       VpcId: !Ref VPC
+ 
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: 
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  RouteTable:    
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      VpcId: !Ref VPC
